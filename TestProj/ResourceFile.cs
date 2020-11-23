@@ -21,9 +21,13 @@ namespace TestProj
     public class ResourceFile
     {
         [Test]
-        public void ReadFile1()
+        public void ReadResource()
         {
-            string fileContent = ReadResource("File1.txt");
+            string fileContent = null;
+            for (int i = 0; i < 1000; i++)
+            {
+                fileContent = ReadResource("File1.txt");
+            }
             Assert.AreEqual(fileContent, "Pippo");
         }
 
@@ -31,16 +35,29 @@ namespace TestProj
         {
             // Determine path
             var assembly = Assembly.GetExecutingAssembly();
-            string resourcePath = name;
+            string resourcePath = fileName;
             // Format: "{Namespace}.{Folder}.{filename}.{Extension}"
             resourcePath = assembly.GetManifestResourceNames()
-                .Single(str => str.EndsWith(name));
+                .Single(str => str.EndsWith(fileName));
 
             using (Stream stream = assembly.GetManifestResourceStream(resourcePath))
             using (StreamReader reader = new StreamReader(stream))
             {
                 return reader.ReadToEnd();
             }
+        }
+
+        [Test]
+        public void ReadFile()
+        {
+            string fileContent = null;
+            for (int i = 0; i < 1000; i++)
+            {
+                fileContent = File.ReadAllText(@"D:\Git Local Repository\XmlResource\XmlResource\bin\Debug\File1.txt");
+            }
+
+
+            Assert.AreEqual(fileContent, "Pippo");
         }
     }
 

@@ -53,6 +53,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="ExternalFile\File1.txt" />
   </ItemGroup>
