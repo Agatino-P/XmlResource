@@ -27,7 +27,7 @@ namespace TestProj
             Assert.AreEqual(fileContent, "Pippo");
         }
 
-        public string ReadResource(string name)
+        public string ReadResource(string fileName)
         {
             // Determine path
             var assembly = Assembly.GetExecutingAssembly();
